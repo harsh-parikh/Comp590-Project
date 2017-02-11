@@ -5,9 +5,8 @@ class Agent:
         self.util = util
 
     def setAdj(adj):
-        #sellTo is a list with True values for which agents
-        it can sell to
+        #sellTo is a list with True values for which agents it can sell to
         self.sellTo = adj[self.index,] == 1.toList()
 
-        #same as above
+        #buyFrom is a list with True values for which agents it can buy from
         self.buyFrom = adj[, self.index] == 1.toList()
