@@ -6,17 +6,15 @@ class Agent:
         self.goods = goods
         self.util  = util
 
-    def setAdj(self, adj):
-        #sellTo is a single row matrix, True indicates
-        #who this agent can sell to
-        self.sellTo = adj[self.index,] == 1
-
-        #buyFrom is a single row matrix, False indicates
-        #who this agent can buy from
-        self.buyFrom = adj[, self.index] == 1
-
     def getUtility(self):
         result = 1
         for good, i in enumerate(goods):
             result *= good.quantity**util[i]
         return result
+
+    def setAdj(self, adj):
+        #sellTo is a list with True values for which agents it can sell to
+        self.sellTo = adj[self.index,] == 1.toList()
+
+        #buyFrom is a list with True values for which agents it can buy from
+        self.buyFrom = adj[, self.index] == 1.toList()
