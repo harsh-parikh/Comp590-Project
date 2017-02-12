@@ -3,5 +3,5 @@ class Network:
         self.agents = agents
         self.adj = adj
 
-    def getNetwork():
+    def getNetwork(self):
         return agents

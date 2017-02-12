@@ -3,8 +3,8 @@ class Good:
         self.quantity = quantity
         self.price = price
 
-    def setQuantity(q):
+    def setQuantity(self, q):
         self.quantity = q
 
-    def setPrice(p):
+    def setPrice(self, p):
         self.price = p
