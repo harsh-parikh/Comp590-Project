@@ -1,0 +1,22 @@
+To run the code, go to market.py. In the bottom half-
+
+m = number of agents
+n = number of goods
+ue = 2D np.array of utility functions' exponent. Each row for each agent. So it should be of shape (m,n)
+endw = 2D np.array of initial endownments. Each row for each agent. So it should be of shape (m,n)
+adj = 2D np.array of adjacency matrix. Make sure it is symmetric.
+quantum = quantum of trade (as in smallest unit which can be traded) 
+
+n1 = market(m,n,ue,endw,adj,quantum)
+
+Example.
+
+m = 2
+n = 2
+ue = np.array( [ [ 2.0, 1.0 ], [ 1.0, 2.0 ] ] )
+endw = np.array( [ [ 1, 2 ] , [ 2, 1 ] ] )
+adj = np.array( [ [ 1, 1 ], [ 1, 1 ] ] )
+quantum = 0.05
+
+n1 = market(m,n,ue,endw,adj,quantum)
+    
