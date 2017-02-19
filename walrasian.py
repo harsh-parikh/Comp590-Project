@@ -58,13 +58,20 @@ def walrasianEq(endownments,utilityFunctions,quantum):
     p1 = gradient(u1,e1,np.finfo(float).eps)
     p2 = gradient(u2,e2,np.finfo(float).eps)
     p = p1-p2
-    while((p.any()==0)!=True):
+    terminationCondition, itr, itrmax = ( 0, 0, 100000)
+    while(np.max(p)>terminationCondition and itr<itrmax):
         x = solution(p,(e1+e2),quantum)
         transaction = np.sign(p)*x
-        e1 = e1 + transaction #there is mistake in sign here, we need to get sign from p vector
+        u1old, u2old = u1(e1), u2(e2)
+        e1 = e1 + transaction
         e2 = e2 - transaction
+        u1new, u2new = u1(e1), u2(e2)
+        if u1new < u1old or u2new < u2old:
+            e1 = e1 - transaction
+            e2 = e2 + transaction
         p1 = gradient(u1,e1,np.finfo(float).eps)
         p2 = gradient(u2,e2,np.finfo(float).eps)
         p = p1-p2
+        itr += 1
     return (e1,e2,p1,p2)
     

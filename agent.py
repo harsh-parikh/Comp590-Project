@@ -7,14 +7,10 @@ class Agent:
         self.util  = util
 
     def getUtility(self):
-        result = 1
-        for good, i in enumerate(goods):
-            result *= good.quantity**util[i]
-        return result
+        return self.util(self.goods.quantity)
 
     def setAdj(self, adj):
         #sellTo is a list with True values for which agents it can sell to
-        self.sellTo = adj[self.index,] == 1.toList()
-
+        self.sellTo = adj[self.index,:]
         #buyFrom is a list with True values for which agents it can buy from
-        self.buyFrom = adj[, self.index] == 1.toList()
+        self.buyFrom = adj[:, self.index]
